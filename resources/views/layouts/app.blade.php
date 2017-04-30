@@ -44,6 +44,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
+                        <a href="/users">Users</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
