@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
             {{$user->name}} <br>
-            {{$user->email}}
+            {{$user->email}}w
     </div>
 </div>
 @endsection

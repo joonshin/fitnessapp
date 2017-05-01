@@ -18,7 +18,7 @@
                                 <input id="name" type="text" class="form-control" name="name" value="{{$user->name}}" required autofocus>
 
                                 @if ($errors->has('name'))
-                                    <span class="help-block">
+                                    <span class="help-block">   
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
