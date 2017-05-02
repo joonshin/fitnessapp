@@ -43,10 +43,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
-                        <a href="/users">Users</a>
-                        &nbsp;
-                        <a href="/movements">Movements</a>
+                        <li><a href="/users">Users</a></li>
+                        <li><a href="/movements">Movements</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

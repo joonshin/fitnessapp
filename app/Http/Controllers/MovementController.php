@@ -27,7 +27,7 @@ class MovementController extends Controller
     public function create()
     {
         //
-        return view('movements/create');
+        return view('movements/create', ['movement' => new Movement]);
     }
 
     /**
