@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App/Movements;
+use App\Movement;
 
 class MovementController extends Controller
 {
@@ -15,6 +15,8 @@ class MovementController extends Controller
     public function index()
     {
         //
+        $movements = Movement::all();
+        return view('movements.index')->with('movements', $movements);
     }
 
     /**
@@ -25,6 +27,7 @@ class MovementController extends Controller
     public function create()
     {
         //
+        return view('movements/create');
     }
 
     /**
@@ -36,6 +39,12 @@ class MovementController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            ]);
+        $movement = new Movement($request->all());
+        $movement->save();
+        return redirect('movements');
     }
 
     /**
@@ -47,6 +56,9 @@ class MovementController extends Controller
     public function show($id)
     {
         //
+        $movement = Movement::findOrFail($id);
+        return view('movements/show')->with('movement', $movement);
+
     }
 
     /**
@@ -58,6 +70,9 @@ class MovementController extends Controller
     public function edit($id)
     {
         //
+        $movement = Movement::findOrFail($id);
+        return view('movements/edit')->with('movement', $movement);
+
     }
 
     /**
@@ -70,6 +85,12 @@ class MovementController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            ]);
+        $movement = Movement::findOrFail($id);
+        $movement->update($request->all());
+        return redirect('movements');
     }
 
     /**
@@ -81,5 +102,9 @@ class MovementController extends Controller
     public function destroy($id)
     {
         //
+        $movement = Movement::findOrFail($id);
+        $movement->delete();
+        return redirect('movements');
+
     }
 }

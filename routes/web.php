@@ -18,4 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('users', 'UserController');
+Route::resource('movements', 'MovementController');
 Route::get('/home', 'HomeController@index');
