@@ -43,6 +43,9 @@ class UserMovementController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'movement_id' => 'required',
+            'weight' => 'required',
+            'time' => 'required',
+            'reps' => 'required'
             ]);
         $usermovement = new UserMovement($request->all());
         $usermovement->save();
@@ -88,6 +91,9 @@ class UserMovementController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'movement_id' => 'required',
+            'weight' => 'required',
+            'time' => 'required',
+            'reps' => 'required'
             ]);
         $usermovement = UserMovement::findOrFail($id);
         $usermovement->update($request->all());

@@ -18,9 +18,12 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Status</th>
+                  <th>UM ID</th>
+                  <th>User ID</th>
+                  <th>Movement ID</th>
+                  <th>Weight</th>
+                  <th>Time</th>
+                  <th>Reps</th>
                   <th></th>
                   <th></th>
                 </tr>
@@ -30,6 +33,10 @@
                   <tr>
                     <td>{{ $usermovement->id }}</td>
                     <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->user_id }}</a></td>
+                    <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->movement_id }}</a></td>
+                    <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->weight }}</a></td>
+                    <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->time }}</a></td>
+                    <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->reps }}</a></td>
                     <td>
                       <a href="{{ route('usermovements.edit', [$usermovement]) }}" class="btn btn-default btn-xs">Edit</a>
                     </td>
