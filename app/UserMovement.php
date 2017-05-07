@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Movement extends Model
+class UserMovement extends Model
 {
     //
     protected $fillable = [
-    'name'
+    'user_id', 'movement_id', 'weight', 'time', 'reps'
     ];
 }
