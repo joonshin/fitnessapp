@@ -20,7 +20,7 @@
 
     <div class="col-md-6">
         <input id="movement_id" type="text" class="form-control"
-          placeholder="UserMovements" name="movement_id" value="{{ old('movement_id',$usermovement->movement_id) }}" required autofocus>
+          placeholder="UserMovements" name="movement_id" value="{{ old('movement_id',$usermovement->movement_id) }}" required>
 
         @if ($errors->has('movement_id'))
             <span class="help-block">
@@ -35,7 +35,7 @@
 
     <div class="col-md-6">
         <input id="weight" type="text" class="form-control"
-          placeholder="UserMovements" name="weight" value="{{ old('weight',$usermovement->weight) }}" required autofocus>
+          placeholder="UserMovements" name="weight" value="{{ old('weight',$usermovement->weight) }}">
 
         @if ($errors->has('weight'))
             <span class="help-block">
@@ -50,7 +50,7 @@
 
     <div class="col-md-6">
         <input id="time" type="text" class="form-control"
-          placeholder="UserMovements" name="time" value="{{ old('time',$usermovement->time) }}" required autofocus>
+          placeholder="UserMovements" name="time" value="{{ old('time',$usermovement->time) }}">
 
         @if ($errors->has('time'))
             <span class="help-block">
@@ -65,7 +65,7 @@
 
     <div class="col-md-6">
         <input id="reps" type="text" class="form-control"
-          placeholder="UserMovements" name="reps" value="{{ old('reps',$usermovement->reps) }}" required autofocus>
+          placeholder="UserMovements" name="reps" value="{{ old('reps',$usermovement->reps) }}">
 
         @if ($errors->has('reps'))
             <span class="help-block">
