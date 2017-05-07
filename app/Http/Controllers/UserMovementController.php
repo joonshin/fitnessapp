@@ -103,8 +103,8 @@ class UserMovementController extends Controller
     public function destroy($id)
     {
         //
-        $movement = Movement::findOrFail($id);
-        $movement->delete();
-        return redirect('movements');
+        $usermovement = UserMovement::findOrFail($id);
+        $usermovement->delete();
+        return redirect('usermovements');
     }
 }
