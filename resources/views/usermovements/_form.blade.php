@@ -10,7 +10,7 @@
 
         <select name="user_id">
           @foreach ($users as $user)
-            <option value="{{ $user->id }}">{{ $user->id }}</option>
+            <option value="{{ $user->id }}">{{ $user->name }}</option>
           @endforeach
         </select>
 
@@ -26,8 +26,14 @@
     <label for="movement_id" class="col-md-4 control-label">Movement ID</label>
 
     <div class="col-md-6">
-        <input id="movement_id" type="text" class="form-control"
-          placeholder="UserMovements" name="movement_id" value="{{ old('movement_id',$usermovement->movement_id) }}" required>
+        <!-- <input id="movement_id" type="text" class="form-control"
+          placeholder="UserMovements" name="movement_id" value="{{ old('movement_id',$usermovement->movement_id) }}" required> -->
+
+        <select name="movement_id">
+          @foreach ($movements as $movement)
+            <option value="{{ $movement->id }}">{{ $movement->name }}</option>
+          @endforeach
+        </select>
 
         @if ($errors->has('movement_id'))
             <span class="help-block">
