@@ -45,6 +45,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/users">Users</a></li>
                         <li><a href="/movements">Movements</a></li>
+                        <li><a href="/usermovements">User Movements</a><li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

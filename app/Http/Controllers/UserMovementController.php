@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserMovement;
+use App\User;
+use App\Movement;
 
 class UserMovementController extends Controller
 {
@@ -27,8 +29,8 @@ class UserMovementController extends Controller
     public function create()
     {
         //
-
-        return view('usermovements/create', ['usermovement' => new UserMovement]);
+        $users = User::all(['id', 'name']);
+        return view('usermovements/create', compact('id', 'users'), ['usermovement' => new UserMovement]);
     }
 
     /**
@@ -75,7 +77,8 @@ class UserMovementController extends Controller
     {
         //
         $usermovement = UserMovement::findOrFail($id);
-        return view('usermovements/edit')->with('usermovement', $usermovement);
+        $users = User::all(['id', 'name']);
+        return view('usermovements/edit', compact('id', 'users'))->with('usermovement', $usermovement);
     }
 
     /**

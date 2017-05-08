@@ -4,8 +4,15 @@
     <label for="user_id" class="col-md-4 control-label">User ID</label>
 
     <div class="col-md-6">
-        <input id="user_id" type="text" class="form-control"
-          placeholder="UserMovements" name="user_id" value="{{ old('user_id', $usermovement->user_id) }}" required autofocus>
+    <!--    <input id="user_id" type="text" class="form-control"
+          placeholder="UserMovements" name="user_id" value="{{ old('user_id', $usermovement->user_id) }}" required autofocus> -->
+
+
+        <select name="user_id">
+          @foreach ($users as $user)
+            <option value="{{ $user->id }}">{{ $user->id }}</option>
+          @endforeach
+        </select>
 
         @if ($errors->has('user_id'))
             <span class="help-block">
