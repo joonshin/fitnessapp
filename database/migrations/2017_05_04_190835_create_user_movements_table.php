@@ -18,7 +18,7 @@ class CreateUserMovementsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('movement_id')->unsigned();
 
-            $table->integer('weight')->unsigned()->nullable();
+            $table->double('weight')->unsigned()->nullable();
             $table->integer('time')->unsigned()->nullable();
             $table->integer('reps')->unsigned()->nullable();
 

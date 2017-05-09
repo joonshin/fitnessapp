@@ -19,8 +19,8 @@
               <thead>
                 <tr>
                   <th>UM ID</th>
-                  <th>User ID</th>
-                  <th>Movement ID</th>
+                  <th>User</th>
+                  <th>Movement</th>
                   <th>Weight</th>
                   <th>Time</th>
                   <th>Reps</th>
@@ -32,8 +32,8 @@
                 @forelse ($usermovements as $usermovement)
                   <tr>
                     <td>{{ $usermovement->id }}</td>
-                    <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->user_id }}</a></td>
-                    <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->movement_id }}</a></td>
+                    <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->user->name }}</a></td>
+                    <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->movement->name }}</a></td>
                     <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->weight }}</a></td>
                     <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->time }}</a></td>
                     <td><a href="{{ route('usermovements.show', [$usermovement]) }}">{{ $usermovement->reps }}</a></td>

@@ -17,7 +17,7 @@ class UserMovementController extends Controller
     public function index()
     {
         //
-        $usermovements = UserMovement::all();
+        $usermovements = UserMovement::with('user', 'movement')->get();
         return view('usermovements/index')->with('usermovements', $usermovements);
     }
 
@@ -31,7 +31,7 @@ class UserMovementController extends Controller
         //
         $users = User::all(['id', 'name']);
         $movements = Movement::all(['id', 'name']);
-        return view('usermovements/create', compact('id', 'users', 'movements'), ['usermovement' => new UserMovement]);
+        return view('usermovements/create', compact('users', 'movements'), ['usermovement' => new UserMovement]);
     }
 
     /**
@@ -46,9 +46,9 @@ class UserMovementController extends Controller
         $this->validate($request, [
             'user_id' => 'required|integer',
             'movement_id' => 'required|integer',
-            'weight' => 'nullable',
-            'time' => 'nullable',
-            'reps' => 'nullable'
+            'weight' => 'nullable|numeric',
+            'time' => 'nullable|integer',
+            'reps' => 'nullable|integer'
             ]);
         $usermovement = new UserMovement($request->all());
         $usermovement->save();
@@ -66,6 +66,12 @@ class UserMovementController extends Controller
         //
         $usermovement = UserMovement::findOrFail($id);
         return view('usermovements/show')->with('usermovement', $usermovement);
+        return view('usermovements/show', [
+          'usermovement' => $usermovement,
+          'id' => $id,
+          'users' => $users,
+          'movements' => $movements
+        ]);
     }
 
     /**
@@ -80,7 +86,7 @@ class UserMovementController extends Controller
         $usermovement = UserMovement::findOrFail($id);
         $users = User::all(['id', 'name']);
         $movements = Movement::all(['id', 'name']);
-        return view('usermovements/edit', compact('id', 'users', 'movements'))->with('usermovement', $usermovement);
+        return view('usermovements/edit', compact('users', 'movements'))->with('usermovement', $usermovement);
     }
 
     /**
@@ -96,9 +102,9 @@ class UserMovementController extends Controller
         $this->validate($request, [
             'user_id' => 'required|integer',
             'movement_id' => 'required|integer',
-            'weight' => 'nullable',
-            'time' => 'nullable',
-            'reps' => 'nullable'
+            'weight' => 'nullable|numeric',
+            'time' => 'nullable|integer',
+            'reps' => 'nullable|integer'
             ]);
         $usermovement = UserMovement::findOrFail($id);
         $usermovement->update($request->all());
