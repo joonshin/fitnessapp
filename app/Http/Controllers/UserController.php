@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Movement;
+use App\UserMovement;
 
 class UserController extends Controller
 {
@@ -46,7 +48,7 @@ class UserController extends Controller
         $user = new User($request->all());
         $user->password = bcrypt('secret');
         $user->save();
-        return redirect('users');       
+        return redirect('users');
     }
 
     /**
@@ -59,7 +61,14 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        return view('users/show')->with('user', $user);
+        $movement = Movement::findOrFail($id);
+        $usermovement = UserMovement::findOrFail($id);
+        $users = User::all(['id', 'name']);
+        $usermovements=$user->usermovements;
+        return view('users/show', compact('users', 'usermovements'))
+          ->with('user', $user)
+          ->with('movement', $movement)
+          ->with('usermovement', $usermovement);
     }
 
     /**

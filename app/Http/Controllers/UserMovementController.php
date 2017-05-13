@@ -65,13 +65,9 @@ class UserMovementController extends Controller
     {
         //
         $usermovement = UserMovement::findOrFail($id);
-        return view('usermovements/show')->with('usermovement', $usermovement);
-        return view('usermovements/show', [
-          'usermovement' => $usermovement,
-          'id' => $id,
-          'users' => $users,
-          'movements' => $movements
-        ]);
+        $users = User::all(['id', 'name']);
+        $movements = Movement::all(['id', 'name']);
+        return view('usermovements/show', compact('users','movements'))->with('usermovement', $usermovement);
     }
 
     /**

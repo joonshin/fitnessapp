@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movement;
+use App\User;
+use App\UserMovement;
 
 class MovementController extends Controller
 {
@@ -56,9 +58,15 @@ class MovementController extends Controller
     public function show($id)
     {
         //
-        $movement = Movement::findOrFail($id);
-        return view('movements/show')->with('movement', $movement);
-
+        $movement = Movement::find($id);
+        $user = User::find($id);
+        $usermovement = UserMovement::find($id);
+        $movements = Movement::all(['id', 'name']);
+        $usermovements=$movement->usermovements;
+        return view('movements/show', compact('movements', 'usermovements'))
+          ->with('movement', $movement)
+          ->with('user', $user)
+          ->with('usermovement', $usermovement);
     }
 
     /**

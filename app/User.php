@@ -27,6 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function movements()
+    {
+      return $this->belongsToMany('App\Movement');
+    }
+
     public function userMovements()
     {
       return $this->hasMany('App\UserMovement');
