@@ -4,7 +4,7 @@
     <label for="user_id" class="col-md-4 control-label">User ID</label>
 
     <div class="col-md-6">
-        <select name="user_id">
+        <select name="user_id" id="user_id">
           @foreach ($users as $user)
             <option value="{{ $user->id }}" @if ($user->id == old('user_id', $usermovement->user_id)) selected="selected" @endif>
               {{ $user->name }}
@@ -55,6 +55,22 @@
     </div>
 </div>
 
+<div class="form-group{{ $errors->has('weight_unit') ? ' has-error' : ''}}">
+    <label for="weight_unit" class="col-md-4 control-label">Weight Unit</label>
+
+    <div class="col-md-6">
+      <select name="weight_unit" class="form-control" id="weight_unit">
+        <option value="kgs">kg</option>
+        <option value="lbs">lbs</option>
+      </select>
+        @if ($errors->has('weight_unit'))
+            <span class="help-block">
+                <strong>{{ $errors->first('weight_unit') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+
 <div class="form-group{{ $errors->has('time') ? ' has-error' : ''}}">
     <label for="time" class="col-md-4 control-label">Time</label>
 
@@ -84,3 +100,5 @@
         @endif
     </div>
 </div>
+
+<script src='/js/test.js'></script>
