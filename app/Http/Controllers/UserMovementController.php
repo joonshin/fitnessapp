@@ -50,23 +50,28 @@ class UserMovementController extends Controller
             'time' => 'nullable|integer',
             'reps' => 'nullable|integer'
             ]);
+
         $data = $request->all();
-        if ($data['units'] == 'kgs') {
-          $data['weight'] = $data['weight'] * 2.20462
+        if ($data['weight_units'] == 'kgs') {
+          $data['weight'] = $data['weight'] * 2.20462;
         }
 
         if (empty($data['weight'])) {
           $data['weight'] = null;
         }
 
-        $timeElements = array_reverse(explode(':', $data['time']));
-        $time = 0;
-        for ($i=0 ; $i<count($timeElements) ; $i++) {
-          $time += $timeElements[$i] * (60**i);
+        if (empty($data['time'])) {
+          $data['time'] = null;
+        } else {
+          $timeElements = array_reverse(explode(':', $data['time']));
+          $time = 0;
+          for ($i=0 ; $i<count($timeElements) ; $i++) {
+            $time += $timeElements[$i] * (60**$i);
+          }
+          $data['time'] = $time;
         }
-        $data['time'] = $time;
 
-        $usermovement = new UserMovement($request->all());
+        $usermovement = new UserMovement($data);
         $usermovement->save();
         return redirect('usermovements');
     }

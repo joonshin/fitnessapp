@@ -55,11 +55,11 @@
     </div>
 </div>
 
-<div class="form-group{{ $errors->has('weight_unit') ? ' has-error' : ''}}">
-    <label for="weight_unit" class="col-md-4 control-label">Weight Unit</label>
+<div class="form-group{{ $errors->has('weight_units') ? ' has-error' : ''}}">
+    <label for="weight_units" class="col-md-4 control-label">Weight Unit</label>
 
     <div class="col-md-6">
-      <select name="weight_unit" class="form-control" id="weight_unit">
+      <select name="weight_units" class="form-control" id="weight_units">
         <option value="kgs">kg</option>
         <option value="lbs">lbs</option>
       </select>

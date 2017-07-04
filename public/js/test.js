@@ -1,6 +1,11 @@
 function convertWeight() {
-  var unit = $("#weight_unit").val();
+  console.log('function fired');
+  var unit = $("#weight_units").val();
   var number = $("#weight").val();
+
+  if (number == '') {
+    return;
+  }
 
   if (unit == "lbs") {
     $("#weight").val(number * 2.2046);
@@ -11,7 +16,6 @@ function convertWeight() {
   }
 }
 window.onload = function() {
-console.log($);
-  $("#unit").change(convertWeight());
-
+  console.log($);
+  $("#weight_units").change(convertWeight);
 }
